@@ -23,28 +23,32 @@
         }
     </style>
     <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
         <h1>Пройдите регистрацию</h1>
+        Введите ваш логин: <input name="login">
         Введите ваш email: <input name="email">
         Введите ваш пароль: <input id="p1" name="password" type="password">
         Повторите ваш пароль: <input id="p2" type="password">
         Загрузите ваш аватар: <input type="file" name="avatar">
-        <button class="btn btn-outline-success ko" id="btn1">Зарегестрироваться</button>
+        <button class="btn btn-outline-success ko" type="submit" id="btn1">Зарегестрироваться</button>
         <h3 style="color: red">{{ err }}</h3>
     </form>
+
+    <script>
+        btn1.onclick = (event) => {
+            if (p1.value !== p2.value) {
+                event.preventDefault()
+                alert('Пароли не совпадают!')
+                return
+            }
+            if (p1.value.replaceAll(' ', '') === '') {
+                event.preventDefault()
+                alert('Пароль не может быть пустым!')
+            }
+        }
+    </script>
 </head>
 <body>
-<script>
-    btn1.onclick = (event) => {
-        if (p1.value !== p2.value) {
-            event.preventDefault()
-            alert('Пароли не совпадают!')
-            return
-        }
-        if (p1.value.replaceAll(' ', '') === '') {
-            event.preventDefault()
-            alert('Пароль не может быть пустым!')
-        }
-    }
-</script>
+
 </body>
 </html>

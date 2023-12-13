@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 class ModelPavel(models.Model):
@@ -11,8 +12,9 @@ class ModelPavelImg(models.Model):
     name = models.CharField(max_length=10)
     img = models.ImageField(upload_to='imgs')
 
-class ModelRegForm(models.Model):
-    login = models.CharField(max_length=20)
+class UserProfile(models.Model):
+    login = models.CharField(max_length = 20)
     password = models.CharField(max_length=20)
     email = models.CharField(max_length=20)
-    avatar = models.ImageField(upload_to='imgs')
+    avatar = models.ImageField(upload_to='avatars/')
+
