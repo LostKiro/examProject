@@ -7,4 +7,5 @@ urlpatterns = [
     path('', views.index),
     path('author/', views.author),
     path('login/', views.login),
+    # path('start-bot/', views.start_bot, name='start_bot')
 ]

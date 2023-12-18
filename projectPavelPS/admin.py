@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from projectPavelPS.models import UserProfile, ModelPavel, ModelPavelImg
+
+admin.site.register(UserProfile)
+admin.site.register(ModelPavel)
+admin.site.register(ModelPavelImg)
