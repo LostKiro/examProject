@@ -1,6 +1,6 @@
 import asyncio
 import logging
-from asyncio import Lock
+import os
 
 from PIL import Image, ImageDraw, ImageOps
 from aiogram import Bot, Dispatcher
@@ -100,6 +100,9 @@ async def process_avatar(message: types.Message, state: FSMContext):
         # Сохранение аватара пользователя
         users_avatar_path = 'user_avatars/'
 
+        if not os.path.exists(users_avatar_path):
+            os.makedirs(users_avatar_path)
+
         # Создание круглого аватара с использованием Pillow
         with Image.open(file) as img:
             size = (128, 128)
@@ -128,10 +131,6 @@ async def process_avatar(message: types.Message, state: FSMContext):
 
 
 async def main():
-    # Base.metadata.create_all(engine)
+    Base.metadata.create_all(engine)
     await dp.start_polling(bot)
 
-
-if __name__ == "__main__":
-    Base.metadata.create_all(engine)
-    asyncio.run(main())

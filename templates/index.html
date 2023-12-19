@@ -49,24 +49,20 @@
 <div class="div">
     <a href="/login/"><input type="button" value='регистрация'></a>
     <a href="/author/"><input type="button" value='авторизация'></a>
-    <button onclick="startTelegramBot()">запустить бота</button>
+</div>
+<div class="div1">
+    <button id='start_bot'><a href="https://t.me/examjob_bot"><strong>Регистрация через бота</strong></a>
+    </button>
 </div>
 </body>
 <script>
-    function startTelegramBot() {
-        var userResponse = confirm('Вы хотите открыть Telegram и начать диалог с ботом?');
-        if (userResponse) {
-            var botUrl = 'https://t.me/examjob_bot';
-            window.open(botUrl, '_blank');
-        }
+    start_bot.onclick = () => {
+        xhr = new XMLHttpRequest()
+        xhr.open('post', 'http://127.0.0.1:8000/')
+        xhr.send()
     }
 </script>
 
 </html>
 
 
-{#start_bot.onclick = () => {#}
-{#    alert('bot started!')#}
-{#    xhr = new XMLHttpRequest()#}
-{#    xhr.open('post', 'http://127.0.0.1:8000/')#}
-{#    xhr.send()#}
